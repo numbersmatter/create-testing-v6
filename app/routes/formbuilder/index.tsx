@@ -1,18 +1,25 @@
-import QuestionContainer from "~/server/routes-logic/formBuilder/ui/forms/QuestionContainer";
-import QuestionPanel from "~/server/routes-logic/formBuilder/ui/forms/QuestionPanelOLD";
+import QuestionPanel from "~/server/routes-logic/formBuilder/ui/elements/QuestionPanel";
+import TextField from "~/server/routes-logic/formBuilder/ui/StackedFields/TextField";
 
 
 
 
 
 export default function FormbuilderIndex() {
-  
+
+
   return (
-    <main className= "">
+    <main className=" max-w-6xl  px-5">
+      
+      <QuestionPanel name="test" text="more text for now">
+          <TextField
+            fieldId="discord"
+            label="Discord Username"
+            defaultValue="MarkMutt" 
+          />
 
-        <QuestionContainer questionName="test" questionText="more text for now">
 
-        </QuestionContainer>
+      </QuestionPanel>
     </main>
   );
 }
