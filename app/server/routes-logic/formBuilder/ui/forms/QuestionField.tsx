@@ -3,10 +3,10 @@ import DateField from "../fields/DateField";
 import SelectField from "../fields/SelectField";
 import TextAreaField from "../fields/TextAreaField";
 import TextField from "../fields/TextField";
-import { Field } from "./types";
+import { Field } from "../../types";
 
 
-export type QuestionTypes = "select" | "date" | "currency" | "longText" | "shortText"
+
 export interface QuestionFieldProps {
   data: Field,
   error: string | undefined,

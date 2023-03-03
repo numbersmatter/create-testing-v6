@@ -1,4 +1,4 @@
-import type { Field } from "../forms/types";
+import type { Field } from "../../types";
 
 export interface SelectFieldProps {
   data: Field,
