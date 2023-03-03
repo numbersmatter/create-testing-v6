@@ -18,6 +18,15 @@ export type Note = {
   body: string;
 }
 
+export interface NameText  {
+  name: string,
+  text: string,
+  order: string[],
+}
+
+const versionUrl = "testCollection/version6"
+
 export const db = {
   userNotes: (uid: string) => dataPoint<Note>(`users/${uid}/notes`),
+  forms: ()=> dataPoint<NameText>(`${versionUrl}/forms`),
 };
