@@ -1,8 +1,8 @@
-import CurrencyField from "./CurrencyField";
-import DateField from "./DateField";
-import SelectField from "./SelectField";
-import TextAreaField from "./TextAreaField";
-import TextField from "./TextField";
+import CurrencyField from "../fields/CurrencyField";
+import DateField from "../fields/DateField";
+import SelectField from "../fields/SelectField";
+import TextAreaField from "../fields/TextAreaField";
+import TextField from "../fields/TextField";
 import { Field } from "./types";
 
 

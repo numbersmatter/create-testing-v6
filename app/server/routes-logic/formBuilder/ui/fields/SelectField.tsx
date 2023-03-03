@@ -1,4 +1,4 @@
-import { Field } from "~/server/request-site.server";
+import type { Field } from "../forms/types";
 
 export interface SelectFieldProps {
   data: Field,
