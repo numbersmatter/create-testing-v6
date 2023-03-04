@@ -1,4 +1,4 @@
-import type { QueryDocumentSnapshot } from "firebase-admin/firestore";
+import type { FieldValue,  QueryDocumentSnapshot, Timestamp } from "firebase-admin/firestore";
 import { getFirestore } from "firebase-admin/firestore";
 
 // helper function to convert firestore data to typescript
@@ -18,15 +18,42 @@ export type Note = {
   body: string;
 }
 
-export interface NameText  {
+export interface Profile {
+  bannerImage: string,
+  avatar: string,
+  displayName: string,
+  profileHeadline: string,
+}
+
+export interface FAQ {
+  createdAt: Timestamp,
+  faqAnswer: string,
+  faqQuestion: string,
+}
+export interface FAQwrite {
+  createdAt: FieldValue;
+  faqAnswer: string;
+  faqQuestion: string;
+}
+
+export interface Opportunity {
+  createdAt:Timestamp,
   name: string,
-  text: string,
-  order: string[],
+  text:string,
+  status: "open" | "closed";
 }
 
 const versionUrl = "testCollection/version6"
 
+defaultPageheader
+
+
 export const db = {
   userNotes: (uid: string) => dataPoint<Note>(`users/${uid}/notes`),
-  forms: ()=> dataPoint<NameText>(`${versionUrl}/forms`),
+  profile : ()=> dataPoint<Profile>(`${versionUrl}/profile`),
+  faqs: (profileId:string) =>dataPoint<FAQ>(`${versionUrl}/profile/${profileId}/faqs`),
+  faqsWrite: (profileId:string) =>dataPoint<FAQwrite>(`${versionUrl}/profile/${profileId}/faqs`),
+  opportunites: (profileId:string) =>dataPoint<Opportunity>(`${versionUrl}/profile/${profileId}/opportunites`),
+  intent: ()=> dataPoint(`${versionUrl}/intents`)
+  
 };
