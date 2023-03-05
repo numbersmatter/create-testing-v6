@@ -45,7 +45,10 @@ export interface Opportunity {
 
 const versionUrl = "testCollection/version6"
 
-defaultPageheader
+export interface IntentDoc {
+  questionOrder: string[],
+  questionStatus: { [key: string]: boolean }
+}
 
 
 export const db = {
@@ -54,6 +57,5 @@ export const db = {
   faqs: (profileId:string) =>dataPoint<FAQ>(`${versionUrl}/profile/${profileId}/faqs`),
   faqsWrite: (profileId:string) =>dataPoint<FAQwrite>(`${versionUrl}/profile/${profileId}/faqs`),
   opportunites: (profileId:string) =>dataPoint<Opportunity>(`${versionUrl}/profile/${profileId}/opportunites`),
-  intent: ()=> dataPoint(`${versionUrl}/intents`)
-  
+  intent: ()=> dataPoint<IntentDoc>(`${versionUrl}/intents`)
 };

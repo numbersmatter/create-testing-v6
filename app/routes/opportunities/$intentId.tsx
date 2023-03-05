@@ -6,9 +6,9 @@ import ProfileHeader from "~/server/routes-logic/opportunities/ui/ProfileHeader"
 export async function loader({params}:LoaderArgs) {
   // get pageHeaderData this is an issue because request relies on hidden information
   const pageHeaderData = await getProfilePageHeaderData("milachu92")
-  if(!pageHeaderData){
-    return defaultPageheader;
-  }
+  // if(!pageHeaderData){
+  //   return defaultPageheader;
+  // }
 
   return json({pageHeaderData});
 }
