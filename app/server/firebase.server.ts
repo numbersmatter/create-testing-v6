@@ -2,9 +2,9 @@ import {
   getApps as getServerApps,
   initializeApp as initializeServerApp,
   cert as serverCert,
-  
 } from "firebase-admin/app";
 import {firestore} from "firebase-admin"
+import { getStorage } from "firebase-admin/storage"
 import { getAuth as getServerAuth } from "firebase-admin/auth";
 
 import * as firebaseRest from "./firebase-rest";
@@ -14,11 +14,13 @@ import * as firebaseRest from "./firebase-rest";
 export const getRestConfig = (): {
   apiKey: string;
   domain: string;
+  storageBucket: string;
 } => {
   if (process.env.NODE_ENV === "development" && !process.env.API_KEY) {
     return {
       apiKey: "fake-api-key",
       domain: "http://localhost:9099/identitytoolkit.googleapis.com",
+      storageBucket: "furry-artist.appspot.com",
     };
   } else if (!process.env.API_KEY) {
     throw new Error("Missing API_KEY environment variable");
@@ -26,6 +28,7 @@ export const getRestConfig = (): {
     return {
       apiKey: process.env.API_KEY,
       domain: "https://identitytoolkit.googleapis.com",
+      storageBucket: "furry-artist.appspot.com",
     };
   }
 };
@@ -79,6 +82,10 @@ export const auth = {
   server: getServerAuth(),
   signInWithPassword,
 };
+export const cloudStorage = getStorage()
+
+export const bucket = cloudStorage.bucket();
+
 
 export const db = firestore()
 
